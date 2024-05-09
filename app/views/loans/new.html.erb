@@ -1,0 +1,33 @@
+<!-- app/views/loans/new.html.erb -->
+
+<h1>New Loan</h1>
+
+<%= form_for(@loan) do |f| %>
+
+  <!-- Display errors if there are any -->
+  <% if @loan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@loan.errors.count, "error") %> prohibited this record from being saved:</h2>
+      <ul>
+        <% @loan.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Your loan form fields go here -->
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.number_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Request Loan" %>
+  </div>
+<% end %>
