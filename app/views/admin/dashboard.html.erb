@@ -1,3 +1,24 @@
-<h1>Admin#dashboard</h1>
-<p>Find me in app/views/admin/dashboard.html.erb</p>
+<!-- app/views/admin/dashboard/index.html.erb -->
+
+<h1>Loan List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @loans.each do |loan| %>
+      <tr>
+        <td><%= loan.name %></td>
+        <td><%= loan.amount %></td>
+        <td><%= loan.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
