@@ -16,6 +16,12 @@
         <td><%= loan.name %></td>
         <td><%= loan.amount %></td>
         <td><%= loan.status %></td>
+        <td>                 
+            <%= form_with(url: approve_loan_path(loan), method: :patch) do |f| %>
+            <%= f.hidden_field :loan_id, value: loan.id %>
+            <%= f.submit 'Approve' %>
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

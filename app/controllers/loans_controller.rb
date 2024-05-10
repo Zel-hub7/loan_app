@@ -14,6 +14,14 @@ class LoansController < ApplicationController
         render :new
       end
     end
+
+    # app/controllers/loans_controller.rb
+    def approve
+      @loan = Loan.find(params[:loan_id])
+      @loan.update(status: 'Approved')
+      redirect_to loans_path, notice: 'Loan has been approved.'
+    end
+
   
     private
   
