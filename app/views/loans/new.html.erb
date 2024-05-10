@@ -17,15 +17,18 @@
   <% end %>
 
   <!-- Your loan form fields go here -->
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
   <div class="field">
     <%= f.label :amount %>
     <%= f.number_field :amount %>
   </div>
 
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.text_field :status %>
-  </div>
+
 
   <div class="actions">
     <%= f.submit "Request Loan" %>
