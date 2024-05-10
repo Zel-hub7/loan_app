@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :loans, only: [:new, :create]
 
   patch 'loans/:id/approve', to: 'loans#approve', as: :approve_loan
+  patch 'loans/:id/reject', to: 'loans#reject', as: :reject_loan
+
 end

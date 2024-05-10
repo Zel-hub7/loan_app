@@ -22,7 +22,14 @@ class LoansController < ApplicationController
       redirect_to loans_path, notice: 'Loan has been approved.'
     end
 
-  
+    # app/controllers/loans_controller.rb
+
+    def reject
+      @loan = Loan.find(params[:loan_id])
+      @loan.update(status: 'Rejected')
+      redirect_to loans_path, notice: 'Loan has been rejected.'
+    end
+ 
     private
   
     def loan_params
