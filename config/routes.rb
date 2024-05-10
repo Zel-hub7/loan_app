@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
   get 'pages/index'
-  get 'admin/dashboard', to: 'admin#dashboard'
+  namespace :admin do
+    resources :dashboard, only: [:index] # Example route for admin dashboard
+  end
 
 
   resources :loans, only: [:new, :create]
