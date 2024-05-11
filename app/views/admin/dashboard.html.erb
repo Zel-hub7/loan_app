@@ -8,6 +8,8 @@
       <th>Name</th>
       <th>Amount</th>
       <th>Status</th>
+      <th>Actions</th>
+      <th>National ID Image</th> <!-- New column for the image -->
     </tr>
   </thead>
   <tbody>
@@ -17,15 +19,22 @@
         <td><%= loan.amount %></td>
         <td><%= loan.status %></td>
         <td>                 
-            <%= form_with(url: approve_loan_path(loan), method: :patch) do |f| %>
+          <%= form_with(url: approve_loan_path(loan), method: :patch) do |f| %>
             <%= f.hidden_field :loan_id, value: loan.id %>
             <%= f.submit 'Approve' %>
-            <% end %>
+          <% end %>
 
-            <%= form_with(url: reject_loan_path(loan), method: :patch, class: 'reject-form') do |f| %>
+          <%= form_with(url: reject_loan_path(loan), method: :patch, class: 'reject-form') do |f| %>
             <%= f.hidden_field :loan_id, value: loan.id %>
             <%= f.submit 'Reject', class: 'reject-button' %>
-            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% if loan.national_id_image.attached? %>
+            <%= image_tag loan.national_id_image %>
+          <% else %>
+            <p>No national ID image uploaded.</p>
+          <% end %>
         </td>
       </tr>
     <% end %>

@@ -7,7 +7,7 @@
   <% else %>
     <p>You haven't requested a loan yet.</p>
   <% end %>
-  
+
   <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to 'Sign in', new_user_session_path %>

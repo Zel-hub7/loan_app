@@ -28,7 +28,11 @@
     <%= f.number_field :amount %>
   </div>
 
-
+  <!-- Add file field for national ID image -->
+  <div class="field">
+    <%= f.label :national_id_image %>
+    <%= f.file_field :national_id_image %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Request Loan" %>
