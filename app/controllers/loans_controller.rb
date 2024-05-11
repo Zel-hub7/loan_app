@@ -33,10 +33,15 @@ class LoansController < ApplicationController
 
     def reject
       @loan = Loan.find(params[:loan_id])
-      @loan.update(status: 'Rejected')
-      redirect_to loans_path, notice: 'Loan has been rejected.'
+      
+      if @loan.update(status: 'Rejected')
+        @loan.destroy
+        redirect_to loans_path, notice: 'Loan has been rejected and deleted.'
+      else
+        redirect_to loans_path, alert: 'Failed to reject loan.'
+      end
     end
- 
+    
     private
   
     def loan_params

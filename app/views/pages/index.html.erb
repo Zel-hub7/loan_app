@@ -1,8 +1,13 @@
-<!-- app/views/pages/home.html.erb -->
-
 <h1>Home</h1>
 
 <% if user_signed_in? %>
+  <% if current_user.loan.present? %>
+    <% loan_status = current_user.loan.status.capitalize %>
+    <p>Your loan status: <%= loan_status %></p>
+  <% else %>
+    <p>You haven't requested a loan yet.</p>
+  <% end %>
+  
   <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to 'Sign in', new_user_session_path %>
