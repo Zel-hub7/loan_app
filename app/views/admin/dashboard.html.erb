@@ -22,10 +22,10 @@
             <%= f.submit 'Approve' %>
             <% end %>
 
-          <%= form_with(url: reject_loan_path(loan), method: :patch, class: 'reject-form') do |f| %>
-          <%= f.hidden_field :loan_id, value: loan.id %>
-          <%= f.submit 'Reject', class: 'reject-button' %>
-          <% end %>
+            <%= form_with(url: reject_loan_path(loan), method: :patch, class: 'reject-form') do |f| %>
+            <%= f.hidden_field :loan_id, value: loan.id %>
+            <%= f.submit 'Reject', class: 'reject-button' %>
+            <% end %>
         </td>
       </tr>
     <% end %>

@@ -7,6 +7,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if current_user.role == 'admin'
+      can :manage, Loan
       admin_dashboard_path
     else
       # Define abilities for non-admin users

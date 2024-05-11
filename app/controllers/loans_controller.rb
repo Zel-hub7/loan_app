@@ -7,13 +7,20 @@ class LoansController < ApplicationController
     end
   
     def create
-      @loan = current_user.loans.new(loan_params)
-      if @loan.save
-        redirect_to root_path, notice: "Loan requested successfully!"
+      if current_user.loan.present?
+        redirect_to root_path, alert: "You have already requested a loan."
       else
-        render :new
+        @loan = Loan.new(loan_params)
+        @loan.user = current_user
+      
+        if @loan.save
+          redirect_to root_path, notice: "Loan requested successfully!"
+        else
+          render :new
+        end
       end
     end
+    
 
     # app/controllers/loans_controller.rb
     def approve
